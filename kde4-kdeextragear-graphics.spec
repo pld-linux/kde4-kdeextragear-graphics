@@ -34,7 +34,7 @@ Header files for libkdcraw development.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe dla programistów używających libkdcraw.
 
-%package -n kde4-digikam
+%package -n digikam
 Summary:	digikam
 Summary(pl.UTF-8):	digikam
 Group:		X11/Libraries
@@ -42,10 +42,10 @@ Requires:	QtSql-sqlite3
 Requires:	qt4-phonon
 Provides:	libkdcraw
 
-%description -n kde4-digikam
+%description -n digikam
 digikam.
 
-%description -n kde4-digikam -l pl.UTF-8
+%description -n digikam -l pl.UTF-8
 digikam.
 
 %package kcoloredit
@@ -207,7 +207,7 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -n kde4-digikam
+%files -n digikam
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/digikam
 %attr(755,root,root) %{_bindir}/digikam-camera
