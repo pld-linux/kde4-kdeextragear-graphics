@@ -1,4 +1,5 @@
 %define		orgname kdeextragear-graphics
+
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		kde4-kdeextragear-graphics
@@ -9,10 +10,8 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	32a6ac0fbcbfe1dcf00202e7966c8951
 URL:		http://extragear.kde.org/apps/kipi/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-devel
-#BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	cmake
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -180,21 +179,13 @@ skanlite.
 %prep
 %setup -q -n %{orgname}-%{version}
 
-#%{__sed} -i -e "s|Categories.*|Categories=Qt;KDE;Graphics;Photograph;|" \
-#        ./digikam/digikam/digikam.desktop \
-#        ./digikam/showfoto/showfoto.desktop
-#echo "# vi: encoding=utf-8" >> ./digikam/digikam/digikam.desktop
-#echo "# vi: encoding=utf-8" >> ./digikam/showfoto/showfoto.desktop
-#echo "# vi: encoding=utf-8" >> ./digikam/imageplugins/digikamimageplugin_core.desktop
-#echo "# vi: encoding=utf-8" >> ./digikam/utilities/imageeditor/digikamimageplugin.desktop
-
 %build
-mkdir build
+install -d build
 cd build
 %cmake \
-		-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-		-LCMS_DIR=%{_libdir} \
-		../
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-LCMS_DIR=%{_libdir} \
+	../
 %{__make}
 
 %install
@@ -216,7 +207,6 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-#%if 0
 %files -n kde4-digikam
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/digikam
@@ -228,7 +218,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/digikam_export.h
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustcurves.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustlevels.so
-#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_antivignetting.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_blurfx.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_border.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_channelmixer.so
@@ -257,7 +246,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamdates.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamsearch.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamtags.so
-#%attr(755,root,root) %{_libdir}/kde4/kio_digikamthumbnail.so
 %attr(755,root,root) %{_libdir}/libdigikam.so
 %attr(755,root,root) %{_libdir}/libdigikam.so.1
 %attr(755,root,root) %{_libdir}/libdigikam.so.1.0.0
@@ -296,7 +284,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/embosstool.*
 %{_iconsdir}/*/*/actions/exifinfo.*
 %{_iconsdir}/*/*/actions/filmgrain.*
-#%{_iconsdir}/*/*/actions/flip.*
 %{_iconsdir}/*/*/actions/freerotation.*
 %{_iconsdir}/*/*/actions/histogram.*
 %{_iconsdir}/*/*/actions/hotpixels.*
@@ -323,10 +310,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/whitebalance.*
 %{_iconsdir}/*/*/apps/digikam.*
 %{_iconsdir}/*/*/apps/showfoto.*
-#%{_iconsdir}/*/*/actions/rotate_cw.*
 %{_iconsdir}/*/*/actions/flip-horizontal.png
 %{_iconsdir}/*/*/actions/flip-vertical.png
-#%{_iconsdir}/*/*/actions/move.png
 %{_iconsdir}/*/*/mimetypes/raw.png
 %{_iconsdir}/*/*/actions/digikamimageplugins.png
 %{_iconsdir}/*/*/actions/filefind.png
@@ -343,10 +328,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/digikamimageplugin_*.desktop
 %{_datadir}/kde4/services/digikamsearch.protocol
 %{_datadir}/kde4/services/digikamtags.protocol
-#%{_datadir}/kde4/services/digikamthumbnail.protocol
 %{_datadir}/kde4/servicetypes/digikamimageplugin.desktop
 %{_mandir}/digitaglinktree.1*
-#%endif
 
 %files kcoloredit -f kcoloredit.lang
 %defattr(644,root,root,755)
@@ -415,7 +398,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/actions/texttool.png
 %{_iconsdir}/hicolor/*/apps/kphotoalbum.png
 %{_iconsdir}/hicolor/*/actions/selecttool.png
-#%{_iconsdir}/hicolor/*/actions/action-video.png
 %{_iconsdir}/hicolor/*/actions/key.png
 %{_iconsdir}/hicolor/*/actions/recttool.png
 %{_iconsdir}/hicolor/*/actions/ellipsetool.png
@@ -435,18 +417,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/kpovmodeler.png
 %{_iconsdir}/oxygen/*/mimetypes/kpovmodeler_doc.png
 
-#%files kuickshow
-#-f kuickshow.lang
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/libkdeinit4_kuickshow.so
-#%attr(755,root,root) %{_bindir}/kuickshow
-#%{_desktopdir}/kde4/kuickshow.desktop
-#%{_iconsdir}/hicolor/*/apps/kuickshow.png
-#%{_datadir}/apps/kuickshow
-
-#%if 0
 %files skanlite -f skanlite.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/skanlite
 %{_desktopdir}/kde4/skanlite.desktop
-#%endif
