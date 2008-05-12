@@ -10,10 +10,13 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	32a6ac0fbcbfe1dcf00202e7966c8951
 URL:		http://extragear.kde.org/apps/kipi/
+BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
+# this lib isn't yet in the repository
+BuildRequires:	libksane-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
