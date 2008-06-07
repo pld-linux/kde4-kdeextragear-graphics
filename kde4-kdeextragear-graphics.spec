@@ -1,14 +1,15 @@
 %define		orgname kdeextragear-graphics
+%define		snap	816399
 
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		kde4-kdeextragear-graphics
-Version:	804573
-Release:	0.1
+Version:	4.0.81
+Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	32a6ac0fbcbfe1dcf00202e7966c8951
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
+# Source0-md5:	7ae5b67bdcd89e1990011ad98be3cf24
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	cmake
@@ -180,7 +181,7 @@ skanlite.
 skanlite.
 
 %prep
-%setup -q -n %{orgname}-%{version}
+%setup -q -n %{orgname}-%{snap}
 
 %build
 install -d build
