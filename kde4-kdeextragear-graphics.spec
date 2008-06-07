@@ -13,11 +13,10 @@ Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	cmake
+BuildRequires:	kde4-kdegraphics-devel
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
-# this lib isn't yet in the repository
-BuildRequires:	libksane-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
