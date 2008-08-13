@@ -1,8 +1,8 @@
 %define		orgname kdeextragear-graphics
 %define		snap	846045
 
-Summary:	KDcraw libary
-Summary(pl.UTF-8):	Biblioteka KDcraw
+Summary:	Kipi (KDE Image Plugin Interface)
+Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
 Version:	4.1.61
 Release:	0.%{snap}.1
@@ -11,6 +11,12 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
 # Source0-md5:	6c2a144c23f2a137a5fe31fc897d449d
 URL:		http://extragear.kde.org/apps/kipi/
+BuildRequires:	Qt3Support-devel >= 4.4.0
+BuildRequires:	QtCore-devel >= 4.4.0
+BuildRequires:	QtDBus-devel >= 4.4.0
+BuildRequires:	QtGui-devel >= 4.4.0
+BuildRequires:	QtSql-devel >= 4.4.0
+BuildRequires:	QtXml-devel >= 4.4.0
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
@@ -24,10 +30,11 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The KDcraw Library is part of the KIPI Project.
-
-%description -l pl.UTF-8
-Biblioteka KDcraw jest częścią projektu KIPI.
+Kipi (KDE Image Plugin Interface) is an effort to develop a common
+plugin structure for Digikam, KimDaBa, Showimg and Gwenview. Its aim
+is to share image plugins among graphic applications. Kipi is based on
+the old digiKam plugins implementation and is maintened by digiKam
+team.
 
 %package devel
 Summary:	Header files for libkdcraw development
