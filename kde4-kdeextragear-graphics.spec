@@ -397,7 +397,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkipiplugins.so
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1.0.0
-%attr(755,root,root) %{_libdir}/kipiplugin_acquireimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_acquireimages.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_flickrexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_gpssync.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_htmlexport.so
@@ -444,7 +444,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
 %{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
 %{_iconsdir}/oxygen/scalable/actions/view-object-histogram-linear.svgz
-%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svg
+%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
 
 %files kgrab
 %defattr(644,root,root,755)
