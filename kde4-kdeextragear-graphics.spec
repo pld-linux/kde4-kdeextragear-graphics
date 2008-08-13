@@ -1,5 +1,6 @@
 %define		orgname kdeextragear-graphics
 %define		snap	846045
+%define		qtver	4.4.1
 
 Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
@@ -11,12 +12,12 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
 # Source0-md5:	6c2a144c23f2a137a5fe31fc897d449d
 URL:		http://extragear.kde.org/apps/kipi/
-BuildRequires:	Qt3Support-devel >= 4.4.0
-BuildRequires:	QtCore-devel >= 4.4.0
-BuildRequires:	QtDBus-devel >= 4.4.0
-BuildRequires:	QtGui-devel >= 4.4.0
-BuildRequires:	QtSql-devel >= 4.4.0
-BuildRequires:	QtXml-devel >= 4.4.0
+BuildRequires:	Qt3Support-devel >= %{qtver}
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtDBus-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	QtSql-devel >= %{qtver}
+BuildRequires:	QtXml-devel >= %{qtver}
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
@@ -26,6 +27,7 @@ BuildRequires:	kde4-libkdcraw >= %{version}
 BuildRequires:	kde4-libkexiv2 >= %{version}
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
