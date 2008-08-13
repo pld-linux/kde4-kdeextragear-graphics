@@ -1,20 +1,23 @@
 %define		orgname kdeextragear-graphics
-%define		snap	816399
+%define		snap	846045
 
 Summary:	KDcraw libary
 Summary(pl.UTF-8):	Biblioteka KDcraw
 Name:		kde4-kdeextragear-graphics
-Version:	4.0.81
+Version:	4.1.61
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
-# Source0-md5:	7ae5b67bdcd89e1990011ad98be3cf24
+# Source0-md5:	6c2a144c23f2a137a5fe31fc897d449d
 URL:		http://extragear.kde.org/apps/kipi/
+BuildRequires:	cmake >= 2.6.0
 BuildRequires:	exiv2-devel >= 0.12
-BuildRequires:	cmake
-BuildRequires:	kde4-kdegraphics-devel
-BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	kde4-kdegraphics-devel >= %{version}
+BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	kde4-kipiplugins >= %{version}
+BuildRequires:	kde4-libkdcraw >= %{version}
+BuildRequires:	kde4-libkexiv2 >= %{version}
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -187,6 +190,7 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DCMAKE_AR=%{_bindir}/ar \
 	-LCMS_DIR=%{_libdir} \
 	../
 %{__make}
@@ -278,7 +282,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/colorfx.*
 %{_iconsdir}/*/*/actions/colormanagement.*
 %{_iconsdir}/*/*/actions/contrast.*
-%{_iconsdir}/*/*/actions/crop.*
 %{_iconsdir}/*/*/actions/depth16to8.*
 %{_iconsdir}/*/*/actions/depth8to16.*
 %{_iconsdir}/*/*/actions/digitalcam.*
@@ -294,7 +297,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/importfolders2albums.*
 %{_iconsdir}/*/*/actions/infrared.*
 %{_iconsdir}/*/*/actions/inpainting.*
-%{_iconsdir}/*/*/actions/inserttext.*
 %{_iconsdir}/*/*/actions/invertimage.*
 %{_iconsdir}/*/*/actions/lensdistortion.*
 %{_iconsdir}/*/*/actions/noisereduction.*
@@ -314,7 +316,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/digikam.*
 %{_iconsdir}/*/*/apps/showfoto.*
 %{_iconsdir}/*/*/actions/flip-horizontal.png
-%{_iconsdir}/*/*/actions/flip-vertical.png
 %{_iconsdir}/*/*/mimetypes/raw.png
 %{_iconsdir}/*/*/actions/digikamimageplugins.png
 %{_iconsdir}/*/*/actions/filefind.png
@@ -332,7 +333,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/digikamsearch.protocol
 %{_datadir}/kde4/services/digikamtags.protocol
 %{_datadir}/kde4/servicetypes/digikamimageplugin.desktop
-%{_mandir}/digitaglinktree.1*
+%{_mandir}/man1/digitaglinktree.1*
 
 %files kcoloredit -f kcoloredit.lang
 %defattr(644,root,root,755)
@@ -419,6 +420,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/org.kde.kpovmodeler.xml
 %{_iconsdir}/hicolor/*/apps/kpovmodeler.png
 %{_iconsdir}/oxygen/*/mimetypes/kpovmodeler_doc.png
+
+%files kuickshow
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kuickshow
+%{_desktopdir}/kde4/kuickshow.desktop
+%attr(755,root,root) %{_libdir}/libkdeinit4_kuickshow.so
+%dir %{_datadir}/apps/kuickshow
+%{_datadir}/apps/kuickshow/pics
+%{_iconsdir}/hicolor/*/apps/kuickshow.png
 
 %files skanlite -f skanlite.lang
 %defattr(644,root,root,755)
