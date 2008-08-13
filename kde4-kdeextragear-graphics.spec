@@ -110,6 +110,30 @@ Summary:	kgrab
 Summary(pl.UTF-8):	kgrab
 Group:		X11/Applications/Graphics
 
+%package kipiplugins
+Summary:	KDE Image Plugin Interface
+Group:		X11/Applications/Graphics
+
+%description kipiplugins
+KIPI (KDE Image Plugin Interface) is an effort to develop a common
+plugin structure for Digikam, KPhotoAlbum, Showimg and GwenView. Its
+aim is to share image plugins among graphic applications. Kipi is
+based on the old digiKam plugins implementation.
+
+One of the nicest things about KDE Photo Management Programs like
+"digiKam", "KPhotoAlbum", "GwenView" and "ShowImg" is how easily its
+functionality can be extended, by using plugins. Plugins can
+manipulate image files in almost any way that users can. Their
+advantage is that it is much easier to add a capability to the host
+application by writing a small plugin than by modifying the host
+application core. Many valuable plugins have C++ source code that only
+comes to 100-200 lines or so.
+
+Kipi plugins are additional functions for the KDE Images Managment
+Host Programs. They can add extra menus and shortcuts, and extend the
+host programs features. You can install as many or as few as you like,
+from within host programs. .
+
 %description kgrab
 kgrab.
 
@@ -208,7 +232,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang kgraphviewer	--with-kde
 %find_lang kiconedit	--with-kde
 %find_lang kpovmodeler	--with-kde
-#%find_lang kuickshow	--with-kde
+%find_lang kuickshow	--with-kde
 %find_lang skanlite	--with-kde
 
 %clean
@@ -359,6 +383,60 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kiconedit
 %{_iconsdir}/hicolor/*x*/apps/kiconedit.png
 
+%files kipiplugins
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkipiplugins.so
+%attr(755,root,root) %{_libdir}/libkipiplugins.so.1
+%attr(755,root,root) %{_libdir}/libkipiplugins.so.1.0.0
+%attr(755,root,root) %{_libdir}/kipiplugin_acquireimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_flickrexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_gpssync.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_htmlexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_imageviewer.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_jpeglossless.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_metadataedit.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_picasawebexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_rawconverter.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_sendimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_simpleviewer.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_slideshow.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_timeadjust.so
+%{_datadir}/apps/kipiplugin_htmlexport/themes
+%{_datadir}/apps/kipiplugin_imageviewer/pics
+%{_datadir}/apps/kipiplugin_metadataedit/data
+%{_datadir}/apps/kipiplugin_simpleviewerexport
+%{_datadir}/kde4/services/kipiplugin_acquireimages.desktop
+%{_datadir}/kde4/services/kipiplugin_flickrexport.desktop
+%{_datadir}/kde4/services/kipiplugin_gpssync.desktop
+%{_datadir}/kde4/services/kipiplugin_htmlexport.desktop
+%{_datadir}/kde4/services/kipiplugin_imageviewer.desktop
+%{_datadir}/kde4/services/kipiplugin_jpeglossless.desktop
+%{_datadir}/kde4/services/kipiplugin_metadataedit.desktop
+%{_datadir}/kde4/services/kipiplugin_picasawebexport.desktop
+%{_datadir}/kde4/services/kipiplugin_rawconverter.desktop
+%{_datadir}/kde4/services/kipiplugin_sendimages.desktop
+%{_datadir}/kde4/services/kipiplugin_simpleviewer.desktop
+%{_datadir}/kde4/services/kipiplugin_slideshow.desktop
+%{_datadir}/kde4/services/kipiplugin_timeadjust.desktop
+%{_iconsdir}/hicolor/*/actions/rawconverterbatch.png
+%{_iconsdir}/hicolor/*/actions/rawconvertersingle.png
+%{_iconsdir}/hicolor/*/actions/gpsimagetag.png
+%{_iconsdir}/hicolor/*/actions/ogl.png
+%{_iconsdir}/hicolor/*/actions/slideshow.png
+%{_iconsdir}/hicolor/*/actions/gpsimagetag.png
+%{_iconsdir}/hicolor/*/actions/grayscaleconvert.png
+%{_iconsdir}/hicolor/*/actions/ogl.png
+%{_iconsdir}/hicolor/*/actions/timeadjust.png
+%{_iconsdir}/hicolor/*/actions/metadataedit.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
+%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
+%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-linear.svgz
+%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svg
+
 %files kgrab
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kgrab
@@ -421,13 +499,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/kpovmodeler.png
 %{_iconsdir}/oxygen/*/mimetypes/kpovmodeler_doc.png
 
-%files kuickshow
+%files kuickshow -f kuickshow.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kuickshow
 %{_desktopdir}/kde4/kuickshow.desktop
 %attr(755,root,root) %{_libdir}/libkdeinit4_kuickshow.so
 %dir %{_datadir}/apps/kuickshow
 %{_datadir}/apps/kuickshow/pics
+%{_datadir}/apps/kuickshow/im_palette.pal
 %{_iconsdir}/hicolor/*/apps/kuickshow.png
 
 %files skanlite -f skanlite.lang
