@@ -1,16 +1,16 @@
 %define		orgname kdeextragear-graphics
-%define		snap	846045
+%define		snap	849433	
 %define		qtver	4.4.1
 
 Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
-Version:	4.1.61
+Version:	4.1.63
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
-# Source0-md5:	6c2a144c23f2a137a5fe31fc897d449d
+# Source0-md5:	08b6cf4bb6d5b5775985d420a914ffdd
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
