@@ -6,7 +6,7 @@ Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
 Version:	4.1.68
-Release:	0.%{snap}.0.1
+Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
@@ -400,7 +400,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1.0.0
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_acquireimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_dngconverter.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_flickrexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_galleryexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_gpssync.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_htmlexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_imageviewer.so
@@ -412,12 +414,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_simpleviewer.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_slideshow.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_timeadjust.so
+%{_datadir}/apps/kipiplugin_galleryexport/pics
 %{_datadir}/apps/kipiplugin_htmlexport/themes
 %{_datadir}/apps/kipiplugin_imageviewer/pics
 %{_datadir}/apps/kipiplugin_metadataedit/data
 %{_datadir}/apps/kipiplugin_simpleviewerexport
+%{_datadir}/apps/kipiplugin_slideshow
 %{_datadir}/kde4/services/kipiplugin_acquireimages.desktop
+%{_datadir}/kde4/services/kipiplugin_dngconverter.desktop
 %{_datadir}/kde4/services/kipiplugin_flickrexport.desktop
+%{_datadir}/kde4/services/kipiplugin_galleryexport.desktop
 %{_datadir}/kde4/services/kipiplugin_gpssync.desktop
 %{_datadir}/kde4/services/kipiplugin_htmlexport.desktop
 %{_datadir}/kde4/services/kipiplugin_imageviewer.desktop
@@ -429,22 +435,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kipiplugin_simpleviewer.desktop
 %{_datadir}/kde4/services/kipiplugin_slideshow.desktop
 %{_datadir}/kde4/services/kipiplugin_timeadjust.desktop
+%{_iconsdir}/hicolor/*/actions/dngconverter.png
 %{_iconsdir}/hicolor/*/actions/rawconverterbatch.png
 %{_iconsdir}/hicolor/*/actions/rawconvertersingle.png
-%{_iconsdir}/hicolor/*/actions/gpsimagetag.png
-%{_iconsdir}/hicolor/*/actions/ogl.png
 %{_iconsdir}/hicolor/*/actions/slideshow.png
 %{_iconsdir}/hicolor/*/actions/gpsimagetag.png
 %{_iconsdir}/hicolor/*/actions/grayscaleconvert.png
 %{_iconsdir}/hicolor/*/actions/ogl.png
 %{_iconsdir}/hicolor/*/actions/timeadjust.png
 %{_iconsdir}/hicolor/*/actions/metadataedit.png
+%{_iconsdir}/oxygen/*/actions/transform-crop-and-resize.png
 %{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
 %{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
+%{_iconsdir}/oxygen/scalable/actions/transform-crop-and-resize.svgz
 %{_iconsdir}/oxygen/scalable/actions/view-object-histogram-linear.svgz
 %{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
 
@@ -462,7 +465,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kgraphviewerpart.so
 %{_datadir}/config.kcfg/kgraphviewer_partsettings.kcfg
 %{_datadir}/apps/kgraphviewerpart
-%{_desktopdir}/kde4/kgraphviewer_part.desktop
+#%{_desktopdir}/kde4/kgraphviewer_part.desktop
 %{_datadir}/kde4/services/kgraphviewer_part.desktop
 %attr(755,root,root) %{_bindir}/kgraphviewer
 %{_iconsdir}/hicolor/*x*/apps/kgraphviewer.png
@@ -473,7 +476,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kgrapheditorsettings.kcfg
 %{_datadir}/apps/kgrapheditor
 %{_desktopdir}/kde4/kgrapheditor.desktop
-%{_datadir}/kde4/services/kgrapheditor.desktop
+#%{_datadir}/kde4/services/kgrapheditor.desktop
 
 %files kphotoalbum
 %defattr(644,root,root,755)
@@ -509,6 +512,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/interfaces/org.kde.kpovmodeler.xml
 %{_iconsdir}/hicolor/*/apps/kpovmodeler.png
 %{_iconsdir}/oxygen/*/mimetypes/kpovmodeler_doc.png
+%{_datadir}/kde4/services/kpovmodelerpart.desktop
 
 %files kuickshow -f kuickshow.lang
 %defattr(644,root,root,755)
