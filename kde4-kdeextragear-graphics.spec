@@ -1,16 +1,16 @@
 %define		orgname kdeextragear-graphics
-%define		snap	869073
+%define		snap	880234
 %define		qtver	4.4.1
 
 Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
-Version:	4.1.68
+Version:	4.1.72
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
-# Source0-md5:	ca21bf2a9f7300855eccaab01c6c4fe2
+# Source0-md5:	fa95171348c6891057c2703ab358ef87
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
@@ -288,9 +288,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamdates.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamsearch.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamtags.so
-%attr(755,root,root) %{_libdir}/libdigikam.so
-%attr(755,root,root) %{_libdir}/libdigikam.so.1
-%attr(755,root,root) %{_libdir}/libdigikam.so.1.0.0
+%attr(755,root,root) %{_libdir}/libdigikamcore.so
+%attr(755,root,root) %{_libdir}/libdigikamcore.so.1
+%attr(755,root,root) %{_libdir}/libdigikamcore.so.1.0.0
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so.1
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so.1.0.0
