@@ -22,9 +22,9 @@ BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	exiv2-devel >= 0.12
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
-BuildRequires:	kde4-kipiplugins >= %{version}
 BuildRequires:	kde4-libkdcraw >= %{version}
 BuildRequires:	kde4-libkexiv2 >= %{version}
+BuildRequires:	kde4-libkipi >= %{version}
 BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	qt4-qmake >= %{qtver}
