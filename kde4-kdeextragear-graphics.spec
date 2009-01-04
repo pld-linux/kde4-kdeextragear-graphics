@@ -1,7 +1,13 @@
+# TODO
+# - BR: -- Could NOT find marble  (missing:  MARBLE_INCLUDE_DIR MARBLE_LIBRARIES)
+#--  libmarblewidget library found....... NO  (optional)
+#--  liblensfun library found............ NO  (optional)
+#--  digiKam will be compiled without geolocation using Marble widget support.                                                 
+#--  digiKam will be compiled without lens auto-correction image editor plugin.           
+
 %define		orgname kdeextragear-graphics
 %define		snap	880234
 %define		qtver	4.4.1
-
 Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
@@ -20,12 +26,15 @@ BuildRequires:	QtSql-devel >= %{qtver}
 BuildRequires:	QtXml-devel >= %{qtver}
 BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	exiv2-devel >= 0.12
+BuildRequires:	gphoto2-devel
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
+BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	kde4-libkdcraw >= %{version}
 BuildRequires:	kde4-libkexiv2 >= %{version}
 BuildRequires:	kde4-libkipi >= %{version}
 BuildRequires:	lcms-devel
+BuildRequires:	libgphoto2-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
