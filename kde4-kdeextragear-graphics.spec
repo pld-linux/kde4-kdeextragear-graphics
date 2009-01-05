@@ -1,9 +1,6 @@
 # TODO
-# - BR: -- Could NOT find marble  (missing:  MARBLE_INCLUDE_DIR MARBLE_LIBRARIES)
-#--  libmarblewidget library found....... NO  (optional)
 #--  liblensfun library found............ NO  (optional)
-#--  digiKam will be compiled without geolocation using Marble widget support.                                                 
-#--  digiKam will be compiled without lens auto-correction image editor plugin.           
+#--  digiKam will be compiled without lens auto-correction image editor plugin.
 
 %define		orgname kdeextragear-graphics
 %define		snap	880234
@@ -26,7 +23,7 @@ BuildRequires:	QtSql-devel >= %{qtver}
 BuildRequires:	QtXml-devel >= %{qtver}
 BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	exiv2-devel >= 0.12
-BuildRequires:	gphoto2-devel
+BuildRequires:	kde4-kdeedu-devel >= %{version}
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
