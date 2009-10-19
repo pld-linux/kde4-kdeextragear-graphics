@@ -228,6 +228,7 @@ skanlite.
 install -d build
 cd build
 %cmake \
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-LCMS_DIR=%{_libdir} \
 %if "%{_lib}" == "lib64"
