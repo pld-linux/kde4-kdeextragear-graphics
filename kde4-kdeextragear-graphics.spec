@@ -20,9 +20,13 @@ BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtSql-devel >= %{qtver}
+BuildRequires:	QtSvg-devel
 BuildRequires:	QtXml-devel >= %{qtver}
+BuildRequires:	automoc4
 BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	exiv2-devel >= 0.12
+BuildRequires:	imlib-devel
+BuildRequires:	jasper-devel
 BuildRequires:	kde4-kdeedu-devel >= %{version}
 BuildRequires:	kde4-kdegraphics-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
@@ -31,10 +35,18 @@ BuildRequires:	kde4-libkdcraw >= %{version}
 BuildRequires:	kde4-libkexiv2 >= %{version}
 BuildRequires:	kde4-libkipi >= %{version}
 BuildRequires:	lcms-devel
+BuildRequires:	lensfun-devel
 BuildRequires:	libgphoto2-devel
 BuildRequires:	libjpeg-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	libxslt-devel
+BuildRequires:	opencv-devel
+BuildRequires:	pkgconfig
+BuildRequires:	qt4-build
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	sane-backends-devel
+BuildRequires:	soprano-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
