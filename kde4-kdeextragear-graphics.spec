@@ -1,23 +1,23 @@
-# TODO
-#--  liblensfun library found............ NO  (optional)
-#--  digiKam will be compiled without lens auto-correction image editor plugin.
-
+# TODO: Nepomuk libraries found.................. NO  (optional)
+# TODO: /usr/share/doc/kde/HTML 
 %define		orgname kdeextragear-graphics
-%define		snap	880234
-%define		qtver	4.4.1
+%define		snap	1098102
+%define		qtver	4.6
 Summary:	Kipi (KDE Image Plugin Interface)
 Summary(pl.UTF-8):	Kipi (KDE Image Plugin Interface)
 Name:		kde4-kdeextragear-graphics
-Version:	4.1.72
+Version:	4.4.1
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		X11/Libraries
+# ftp://ftp.kde.org/pub/kde/unstable/snapshots/kdeextragear-graphics-1098102.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/unstable/snapshots/%{orgname}-%{snap}.tar.bz2
-# Source0-md5:	fa95171348c6891057c2703ab358ef87
+# Source0-md5:	863cd5ad2528ee94127b20c12daf20d8
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtDBus-devel >= %{qtver}
+BuildRequires:	QtDesigner-devel
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtSql-devel >= %{qtver}
 BuildRequires:	QtSvg-devel
@@ -37,11 +37,13 @@ BuildRequires:	kde4-libkipi >= %{version}
 BuildRequires:	lcms-devel
 BuildRequires:	lensfun-devel
 BuildRequires:	libgphoto2-devel
+BuildRequires:	libgpod-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	opencv-devel
 BuildRequires:	pkgconfig
+BuildRequires:	qca-devel >= 2.0
 BuildRequires:	qt4-build
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -167,16 +169,16 @@ kgrab.
 %description kgrab -l pl.UTF-8
 kgrab.
 
-%package kgraphviewer
-Summary:	kgraphviewer
-Summary(pl.UTF-8):	kgraphviewer
-Group:		X11/Applications/Graphics
-
-%description kgraphviewer
-kgraphviewer.
-
-%description kgraphviewer -l pl.UTF-8
-kgraphviewer.
+#%package kgraphviewer
+#Summary:	kgraphviewer
+#Summary(pl.UTF-8):	kgraphviewer
+#Group:		X11/Applications/Graphics
+#
+#%description kgraphviewer
+#kgraphviewer.
+#
+#%description kgraphviewer -l pl.UTF-8
+#kgraphviewer.
 
 %package kphotoalbum
 Summary:	kphotoalbum
@@ -270,31 +272,36 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n digikam
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cleanup_digikamdb
 %attr(755,root,root) %{_bindir}/digikam
-%attr(755,root,root) %{_bindir}/digikam-camera
-%attr(755,root,root) %{_bindir}/digikamthemedesigner
+%attr(755,root,root) %{_bindir}/expoblending
+
+#%attr(755,root,root) %{_bindir}/digikam-camera
+#%attr(755,root,root) %{_bindir}/digikamthemedesigner
 %attr(755,root,root) %{_bindir}/digitaglinktree
 %attr(755,root,root) %{_bindir}/showfoto
 %{_includedir}/digikam
 %{_includedir}/digikam_export.h
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustcurves.so
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustlevels.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustcurves.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_adjustlevels.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_blurfx.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_border.so
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_channelmixer.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_channelmixer.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_charcoal.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_colorfx.so
+%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_contentawareresizing.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_core.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_distortionfx.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_emboss.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_filmgrain.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_freerotation.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_hotpixels.so
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_infrared.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_infrared.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_inpainting.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_inserttext.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_lenscorrection.so
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_noisereduction.so
+%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_localcontrast.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_noisereduction.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_oilpaint.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_perspective.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_raindrop.so
@@ -302,7 +309,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_sheartool.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_superimpose.so
 %attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_texture.so
-%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_whitebalance.so
+#%attr(755,root,root) %{_libdir}/kde4/digikamimageplugin_whitebalance.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamalbums.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamdates.so
 %attr(755,root,root) %{_libdir}/kde4/kio_digikamsearch.so
@@ -313,74 +320,82 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so.1
 %attr(755,root,root) %{_libdir}/libdigikamdatabase.so.1.0.0
+%{_desktopdir}/kde4/expoblending.desktop
 %{_desktopdir}/kde4/digikam.desktop
 %{_desktopdir}/kde4/showfoto.desktop
 %{_datadir}/apps/digikam
 %{_datadir}/apps/showfoto
 
-%{_iconsdir}/*/*/actions/addimagefolder.*
-%{_iconsdir}/*/*/actions/adjustcurves.*
-%{_iconsdir}/*/*/actions/adjusthsl.*
-%{_iconsdir}/*/*/actions/adjustlevels.*
-%{_iconsdir}/*/*/actions/adjustrgb.*
-%{_iconsdir}/*/*/actions/albumfoldercomment.*
-%{_iconsdir}/*/*/actions/albumfoldernew.*
-%{_iconsdir}/*/*/actions/antivignetting.*
-%{_iconsdir}/*/*/actions/autocorrection.*
-%{_iconsdir}/*/*/actions/blurfx.*
-%{_iconsdir}/*/*/actions/blurimage.*
-%{_iconsdir}/*/*/actions/bordertool.*
-%{_iconsdir}/*/*/actions/bwtonal.*
-%{_iconsdir}/*/*/actions/channelmixer.*
-%{_iconsdir}/*/*/actions/charcoaltool.*
-%{_iconsdir}/*/*/actions/colorfx.*
-%{_iconsdir}/*/*/actions/colormanagement.*
-%{_iconsdir}/*/*/actions/contrast.*
-%{_iconsdir}/*/*/actions/depth16to8.*
-%{_iconsdir}/*/*/actions/depth8to16.*
-%{_iconsdir}/*/*/actions/digitalcam.*
-%{_iconsdir}/*/*/actions/distortionfx.*
-%{_iconsdir}/*/*/actions/editimage.*
-%{_iconsdir}/*/*/actions/embosstool.*
-%{_iconsdir}/*/*/actions/exifinfo.*
-%{_iconsdir}/*/*/actions/filmgrain.*
-%{_iconsdir}/*/*/actions/freerotation.*
-%{_iconsdir}/*/*/actions/histogram.*
-%{_iconsdir}/*/*/actions/hotpixels.*
-%{_iconsdir}/*/*/actions/imagecomment.*
-%{_iconsdir}/*/*/actions/importfolders2albums.*
-%{_iconsdir}/*/*/actions/infrared.*
-%{_iconsdir}/*/*/actions/inpainting.*
-%{_iconsdir}/*/*/actions/invertimage.*
-%{_iconsdir}/*/*/actions/lensdistortion.*
-%{_iconsdir}/*/*/actions/noisereduction.*
-%{_iconsdir}/*/*/actions/oilpaint.*
-%{_iconsdir}/*/*/actions/perspective.*
-%{_iconsdir}/*/*/actions/raindrop.*
-%{_iconsdir}/*/*/actions/ratiocrop.*
-%{_iconsdir}/*/*/actions/redeyes.*
-%{_iconsdir}/*/*/actions/resize_image.*
-%{_iconsdir}/*/*/actions/restoration.*
-%{_iconsdir}/*/*/actions/sharpenimage.*
-%{_iconsdir}/*/*/actions/shear.*
-%{_iconsdir}/*/*/actions/superimpose.*
-%{_iconsdir}/*/*/actions/texture.*
-%{_iconsdir}/*/*/actions/viewimage.*
-%{_iconsdir}/*/*/actions/whitebalance.*
+#%{_iconsdir}/*/*/actions/addimagefolder.*
+#%{_iconsdir}/*/*/actions/adjustcurves.*
+#%{_iconsdir}/*/*/actions/adjusthsl.*
+#%{_iconsdir}/*/*/actions/adjustlevels.*
+#%{_iconsdir}/*/*/actions/adjustrgb.*
+#%{_iconsdir}/*/*/actions/albumfoldercomment.*
+#%{_iconsdir}/*/*/actions/albumfoldernew.*
+#%{_iconsdir}/*/*/actions/antivignetting.*
+#%{_iconsdir}/*/*/actions/autocorrection.*
+#%{_iconsdir}/*/*/actions/blurfx.*
+#%{_iconsdir}/*/*/actions/blurimage.*
+#%{_iconsdir}/*/*/actions/bordertool.*
+%{_iconsdir}/*/*/actions/borderimages.*
+#%{_iconsdir}/*/*/actions/bwtonal.*
+#%{_iconsdir}/*/*/actions/channelmixer.*
+#%{_iconsdir}/*/*/actions/charcoaltool.*
+#%{_iconsdir}/*/*/actions/colorfx.*
+%{_iconsdir}/*/*/actions/colorimages.*
+#%{_iconsdir}/*/*/actions/colormanagement.*
+#%{_iconsdir}/*/*/actions/contrast.*
+%{_iconsdir}/*/*/actions/convertimages.*
+#%{_iconsdir}/*/*/actions/depth16to8.*
+#%{_iconsdir}/*/*/actions/depth8to16.*
+#%{_iconsdir}/*/*/actions/digitalcam.*
+#%{_iconsdir}/*/*/actions/distortionfx.*
+#%{_iconsdir}/*/*/actions/editimage.*
+%{_iconsdir}/*/*/actions/effectimages.*
+#%{_iconsdir}/*/*/actions/embosstool.*
+#%{_iconsdir}/*/*/actions/exifinfo.*
+#%{_iconsdir}/*/*/actions/filmgrain.*
+%{_iconsdir}/*/*/actions/filterimages.*
+#%{_iconsdir}/*/*/actions/freerotation.*
+#%{_iconsdir}/*/*/actions/histogram.*
+#%{_iconsdir}/*/*/actions/hotpixels.*
+#%{_iconsdir}/*/*/actions/imagecomment.*
+#%{_iconsdir}/*/*/actions/importfolders2albums.*
+#%{_iconsdir}/*/*/actions/infrared.*
+#%{_iconsdir}/*/*/actions/inpainting.*
+#%{_iconsdir}/*/*/actions/invertimage.*
+#%{_iconsdir}/*/*/actions/lensdistortion.*
+#%{_iconsdir}/*/*/actions/noisereduction.*
+#%{_iconsdir}/*/*/actions/oilpaint.*
+#%{_iconsdir}/*/*/actions/perspective.*
+#%{_iconsdir}/*/*/actions/raindrop.*
+#%{_iconsdir}/*/*/actions/ratiocrop.*
+#%{_iconsdir}/*/*/actions/redeyes.*
+%{_iconsdir}/*/*/actions/recompressimages.*
+%{_iconsdir}/*/*/actions/resizeimages.*
+#%{_iconsdir}/*/*/actions/restoration.*
+%{_iconsdir}/*/*/actions/renameimages.*
+#%{_iconsdir}/*/*/actions/sharpenimage.*
+#%{_iconsdir}/*/*/actions/shear.*
+#%{_iconsdir}/*/*/actions/superimpose.*
+#%{_iconsdir}/*/*/actions/texture.*
+#%{_iconsdir}/*/*/actions/viewimage.*
+#%{_iconsdir}/*/*/actions/whitebalance.*
+%{_iconsdir}/*/*/actions/flip-horizontal.png
+#%{_iconsdir}/*/*/mimetypes/raw.png
+#%{_iconsdir}/*/*/actions/digikamimageplugins.png
+#%{_iconsdir}/*/*/actions/filefind.png
+#%{_iconsdir}/*/*/actions/lighttable.png
+%{_iconsdir}/*/*/actions/video.png
+#%{_iconsdir}/*/*/actions/lighttableadd.png
+#%{_iconsdir}/*/*/actions/zoom-select-fit.png
+#%{_iconsdir}/*/*/apps/digikamimageplugins.png
 %{_iconsdir}/*/*/apps/digikam.*
 %{_iconsdir}/*/*/apps/showfoto.*
-%{_iconsdir}/*/*/actions/flip-horizontal.png
-%{_iconsdir}/*/*/mimetypes/raw.png
-%{_iconsdir}/*/*/actions/digikamimageplugins.png
-%{_iconsdir}/*/*/actions/filefind.png
-%{_iconsdir}/*/*/actions/lighttable.png
-%{_iconsdir}/*/*/actions/video.png
-%{_iconsdir}/*/*/actions/lighttableadd.png
-%{_iconsdir}/*/*/actions/zoom-select-fit.png
-%{_iconsdir}/*/*/apps/digikamimageplugins.png
-%{_datadir}/kde4/services/ServiceMenus/digikam-download.desktop
-%{_datadir}/kde4/services/ServiceMenus/digikam-gphoto2-camera.desktop
-%{_datadir}/kde4/services/ServiceMenus/digikam-mount-and-download.desktop
+#%{_datadir}/kde4/services/ServiceMenus/digikam-download.desktop
+#%{_datadir}/kde4/services/ServiceMenus/digikam-gphoto2-camera.desktop
+#%{_datadir}/kde4/services/ServiceMenus/digikam-mount-and-download.desktop
 %{_datadir}/kde4/services/digikamalbums.protocol
 %{_datadir}/kde4/services/digikamdates.protocol
 %{_datadir}/kde4/services/digikamimageplugin_*.desktop
@@ -388,21 +403,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/digikamtags.protocol
 %{_datadir}/kde4/servicetypes/digikamimageplugin.desktop
 %{_mandir}/man1/digitaglinktree.1*
+%{_mandir}/man1/cleanup_digikamdb.1*
+
 
 %files kcoloredit -f kcoloredit.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kcoloredit
 %{_desktopdir}/kde4/kcoloredit.desktop
-%{_datadir}/apps/kcoloredit/kcoloreditui.rc
+%{_datadir}/apps/kcoloredit
 %{_iconsdir}/hicolor/*x*/apps/kcoloredit.png
 
 %files kfax
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kfax
 %{_desktopdir}/kde4/kfax.desktop
-%{_datadir}/apps/kfax/pics/kfax.tif
-%{_datadir}/apps/kfax/pics/kfaxlogo.xpm
-%{_datadir}/apps/kfax/kfaxui.rc
+#%{_datadir}/apps/kfax/pics/kfax.tif
+#%{_datadir}/apps/kfax/pics/kfaxlogo.xpm
+#%{_datadir}/apps/kfax/kfaxui.rc
+%{_datadir}/apps/kfax
 %{_iconsdir}/hicolor/*x*/apps/kfax.png
 %{_iconsdir}/hicolor/scalable/apps/kfax.svgz
 
@@ -415,60 +433,114 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kipiplugins
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/dngconverter
 %attr(755,root,root) %{_libdir}/libkipiplugins.so
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1
 %attr(755,root,root) %{_libdir}/libkipiplugins.so.1.0.0
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_acquireimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_advancedslideshow.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_batchprocessimages.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_calendar.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_dngconverter.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_expoblending.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_facebook.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_flashexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_flickrexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_galleryexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_gpssync.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_htmlexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_imageviewer.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_ipodexport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_jpeglossless.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_kioexportimport.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_metadataedit.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_picasawebexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_piwigoexport.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_printimages.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_rawconverter.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_removeredeyes.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_sendimages.so
-%attr(755,root,root) %{_libdir}/kde4/kipiplugin_simpleviewer.so
-%attr(755,root,root) %{_libdir}/kde4/kipiplugin_slideshow.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_shwup.so
+#%attr(755,root,root) %{_libdir}/kde4/kipiplugin_simpleviewer.so
+#%attr(755,root,root) %{_libdir}/kde4/kipiplugin_slideshow.so
+%attr(755,root,root) %{_libdir}/kde4/kipiplugin_smug.so
 %attr(755,root,root) %{_libdir}/kde4/kipiplugin_timeadjust.so
-%{_datadir}/apps/kipiplugin_galleryexport/pics
-%{_datadir}/apps/kipiplugin_htmlexport/themes
-%{_datadir}/apps/kipiplugin_imageviewer/pics
-%{_datadir}/apps/kipiplugin_metadataedit/data
-%{_datadir}/apps/kipiplugin_simpleviewerexport
-%{_datadir}/apps/kipiplugin_slideshow
+%attr(755,root,root) %{_libdir}/kde4/plugins/marble/ExternalDraw.so
+%{_datadir}/apps/kipiplugin_expoblending
+%{_datadir}/apps/kipiplugin_flashexport
+%{_datadir}/apps/kipiplugin_galleryexport
+%{_datadir}/apps/kipiplugin_htmlexport
+%{_datadir}/apps/kipiplugin_imageviewer
+%{_datadir}/apps/kipiplugin_metadataedit
+%{_datadir}/apps/kipiplugin_piwigoexport
+%{_datadir}/apps/kipiplugin_printimages
+%{_datadir}/apps/kipiplugin_removeredeyes/
+#%{_datadir}/apps/kipiplugin_simpleviewerexport
+#%{_datadir}/apps/kipiplugin_slideshow
+%{_datadir}/apps/solid/actions/digikam-opencamera.desktop
+
 %{_datadir}/kde4/services/kipiplugin_acquireimages.desktop
+%{_datadir}/kde4/services/kipiplugin_advancedslideshow.desktop
+%{_datadir}/kde4/services/kipiplugin_batchprocessimages.desktop
+%{_datadir}/kde4/services/kipiplugin_calendar.desktop
 %{_datadir}/kde4/services/kipiplugin_dngconverter.desktop
+%{_datadir}/kde4/services/kipiplugin_expoblending.desktop
+%{_datadir}/kde4/services/kipiplugin_facebook.desktop
+%{_datadir}/kde4/services/kipiplugin_flashexport.desktop
 %{_datadir}/kde4/services/kipiplugin_flickrexport.desktop
 %{_datadir}/kde4/services/kipiplugin_galleryexport.desktop
 %{_datadir}/kde4/services/kipiplugin_gpssync.desktop
 %{_datadir}/kde4/services/kipiplugin_htmlexport.desktop
 %{_datadir}/kde4/services/kipiplugin_imageviewer.desktop
+%{_datadir}/kde4/services/kipiplugin_ipodexport.desktop
 %{_datadir}/kde4/services/kipiplugin_jpeglossless.desktop
+%{_datadir}/kde4/services/kipiplugin_kioexportimport.desktop
 %{_datadir}/kde4/services/kipiplugin_metadataedit.desktop
 %{_datadir}/kde4/services/kipiplugin_picasawebexport.desktop
+%{_datadir}/kde4/services/kipiplugin_piwigoexport.desktop
+%{_datadir}/kde4/services/kipiplugin_printimages.desktop
 %{_datadir}/kde4/services/kipiplugin_rawconverter.desktop
+%{_datadir}/kde4/services/kipiplugin_removeredeyes.desktop
 %{_datadir}/kde4/services/kipiplugin_sendimages.desktop
-%{_datadir}/kde4/services/kipiplugin_simpleviewer.desktop
-%{_datadir}/kde4/services/kipiplugin_slideshow.desktop
+%{_datadir}/kde4/services/kipiplugin_shwup.desktop
+%{_datadir}/kde4/services/kipiplugin_smug.desktop
+
+#%{_datadir}/kde4/services/kipiplugin_simpleviewer.desktop
+#%{_datadir}/kde4/services/kipiplugin_slideshow.desktop
 %{_datadir}/kde4/services/kipiplugin_timeadjust.desktop
-%{_iconsdir}/hicolor/*/actions/dngconverter.png
-%{_iconsdir}/hicolor/*/actions/rawconverterbatch.png
-%{_iconsdir}/hicolor/*/actions/rawconvertersingle.png
-%{_iconsdir}/hicolor/*/actions/slideshow.png
+#%{_iconsdir}/hicolor/*/actions/dngconverter.png
+#%{_iconsdir}/hicolor/*/actions/rawconverterbatch.png
+#%{_iconsdir}/hicolor/*/actions/rawconvertersingle.png
+%{_iconsdir}/hicolor/*/actions/expoblending.*
+%{_iconsdir}/hicolor/*/actions/facebook.*
+%{_iconsdir}/hicolor/*/actions/flash.*
+%{_iconsdir}/hicolor/*/actions/flickr.*
+%{_iconsdir}/hicolor/*/actions/gallery.*
 %{_iconsdir}/hicolor/*/actions/gpsimagetag.png
 %{_iconsdir}/hicolor/*/actions/grayscaleconvert.png
-%{_iconsdir}/hicolor/*/actions/ogl.png
-%{_iconsdir}/hicolor/*/actions/timeadjust.png
+%{_iconsdir}/hicolor/*/actions/hq.*
 %{_iconsdir}/hicolor/*/actions/metadataedit.png
-%{_iconsdir}/oxygen/*/actions/transform-crop-and-resize.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
-%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
-%{_iconsdir}/oxygen/scalable/actions/transform-crop-and-resize.svgz
-%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-linear.svgz
-%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
+%{_iconsdir}/hicolor/*/actions/ogl.png
+%{_iconsdir}/hicolor/*/actions/picasa.*
+%{_iconsdir}/hicolor/*/actions/piwigo.*
+%{_iconsdir}/hicolor/*/actions/shwup.*
+%{_iconsdir}/hicolor/*/actions/slideshow.png
+%{_iconsdir}/hicolor/*/actions/smugmug.*
+%{_iconsdir}/hicolor/*/actions/timeadjust.png
+%{_iconsdir}/hicolor/*/actions/zooomr.*
+#%{_iconsdir}/oxygen/*/actions/transform-crop-and-resize.png
+#%{_iconsdir}/oxygen/*/actions/view-object-histogram-linear.png
+#%{_iconsdir}/oxygen/*/actions/view-object-histogram-logarithmic.png
+#%{_iconsdir}/oxygen/scalable/actions/transform-crop-and-resize.svgz
+#%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-linear.svgz
+#%{_iconsdir}/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
+%{_iconsdir}/oxygen/*/apps/dngconverter.png
+%{_iconsdir}/oxygen/*/apps/rawconverter.png
+%{_iconsdir}/oxygen/scalable/apps/dngconverter.svgz
+%{_iconsdir}/oxygen/scalable/apps/rawconverter.svgz
+%{_desktopdir}/kde4/dngconverter.desktop
+%{_desktopdir}/kde4/kipiplugins.desktop
+
 
 %files kgrab
 %defattr(644,root,root,755)
@@ -479,22 +551,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/kgrab.png
 %{_iconsdir}/hicolor/scalable/apps/kgrab.svgz
 
-%files kgraphviewer -f kgraphviewer.lang
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kgraphviewerpart.so
-%{_datadir}/config.kcfg/kgraphviewer_partsettings.kcfg
-%{_datadir}/apps/kgraphviewerpart
+#%files kgraphviewer -f kgraphviewer.lang
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kgraphviewerpart.so
+#%{_datadir}/config.kcfg/kgraphviewer_partsettings.kcfg
+#%{_datadir}/apps/kgraphviewerpart
 #%{_desktopdir}/kde4/kgraphviewer_part.desktop
-%{_datadir}/kde4/services/kgraphviewer_part.desktop
-%attr(755,root,root) %{_bindir}/kgraphviewer
-%{_iconsdir}/hicolor/*x*/apps/kgraphviewer.png
-%{_datadir}/config.kcfg/kgraphviewersettings.kcfg
-%{_datadir}/apps/kgraphviewer
-%{_desktopdir}/kde4/kgraphviewer.desktop
-%attr(755,root,root) %{_bindir}/kgrapheditor
-%{_datadir}/config.kcfg/kgrapheditorsettings.kcfg
-%{_datadir}/apps/kgrapheditor
-%{_desktopdir}/kde4/kgrapheditor.desktop
+#%{_datadir}/kde4/services/kgraphviewer_part.desktop
+#%attr(755,root,root) %{_bindir}/kgraphviewer
+#%{_iconsdir}/hicolor/*x*/apps/kgraphviewer.png
+#%{_datadir}/config.kcfg/kgraphviewersettings.kcfg
+#%{_datadir}/apps/kgraphviewer
+#%{_desktopdir}/kde4/kgraphviewer.desktop
+#%attr(755,root,root) %{_bindir}/kgrapheditor
+#%{_datadir}/config.kcfg/kgrapheditorsettings.kcfg
+#%{_datadir}/apps/kgrapheditor
+#%{_desktopdir}/kde4/kgrapheditor.desktop
 #%{_datadir}/kde4/services/kgrapheditor.desktop
 
 %files kphotoalbum
@@ -511,12 +583,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kphotoalbum/demo
 %{_datadir}/apps/kphotoalbum/pics
 %{_iconsdir}/hicolor/*/actions/texttool.png
-%{_iconsdir}/hicolor/*/apps/kphotoalbum.png
 %{_iconsdir}/hicolor/*/actions/selecttool.png
 %{_iconsdir}/hicolor/*/actions/key.png
 %{_iconsdir}/hicolor/*/actions/recttool.png
 %{_iconsdir}/hicolor/*/actions/ellipsetool.png
 %{_iconsdir}/hicolor/*/actions/linetool.png
+%{_iconsdir}/hicolor/*/apps/kphotoalbum.png
 %{_datadir}/apps/kphotoalbum/themes
 
 %files kpovmodeler -f kpovmodeler.lang
@@ -546,4 +618,6 @@ rm -rf $RPM_BUILD_ROOT
 %files skanlite -f skanlite.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/skanlite
+%attr(755,root,root) %{_bindir}/scangui
 %{_desktopdir}/kde4/skanlite.desktop
+%{_desktopdir}/kde4/scangui.desktop
