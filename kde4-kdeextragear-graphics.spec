@@ -139,6 +139,12 @@ Summary:	kgrab
 Summary(pl.UTF-8):	kgrab
 Group:		X11/Applications/Graphics
 
+%description kgrab
+kgrab.
+
+%description kgrab -l pl.UTF-8
+kgrab.
+
 %package kipiplugins
 Summary:	KDE Image Plugin Interface
 Group:		X11/Applications/Graphics
@@ -162,12 +168,6 @@ Kipi plugins are additional functions for the KDE Images Managment
 Host Programs. They can add extra menus and shortcuts, and extend the
 host programs features. You can install as many or as few as you like,
 from within host programs. .
-
-%description kgrab
-kgrab.
-
-%description kgrab -l pl.UTF-8
-kgrab.
 
 #%package kgraphviewer
 #Summary:	kgraphviewer
